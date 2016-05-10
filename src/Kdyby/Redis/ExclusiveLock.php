@@ -109,7 +109,7 @@ class ExclusiveLock extends Nette\Object
 				}
 
 				$lockExpiration = $this->client->get($lockKey);
-				$sleepTime += 2500;
+				$sleepTime *= 1.5;
 
 			} while (empty($lockExpiration) || ($lockExpiration >= time() && !usleep($sleepTime)));
 
